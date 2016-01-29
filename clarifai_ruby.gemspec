@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["chardane@gmail.com", "maxcell.wilson@gmail.com"]
 
   spec.summary       = %q{A Ruby client for the Clarifai API}
-  spec.description   = %q{Clarifai is a visual recognition API. Clarifai's algorithms enable fine grained classification, localization of objects in images and similarity search based on the combination of semantic and visual properties. }
+  spec.description   = %q{Work In Progress - Clarifai is a visual recognition API. Clarifai's algorithms enable fine grained classification, localization of objects in images and similarity search based on the combination of semantic and visual properties. }
   spec.homepage      = "https://github.com/chardane/ClarifaiRuby"
   spec.license       = "MIT"
 
