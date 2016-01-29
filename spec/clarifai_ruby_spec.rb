@@ -6,6 +6,6 @@ describe ClarifaiRuby do
   end
 
   it 'does something useful' do
-    expect(false).to eq(true)
+    expect(ClarifaiRuby.hello_world).to eq "yo, boo"
   end
 end
