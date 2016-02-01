@@ -19,8 +19,6 @@ end
 # Usage
 #
 # ClarifaiRuby.configure do |config|
-#   config.base_url = "https://api.clarifai.com/v1"
-#   config.version_path = "/v1"
 #   config.client_id = "XDEWESBGHRDEWFGNBV"
 #   config.client_secret = "-123wedkfjnkj3"
 # end
