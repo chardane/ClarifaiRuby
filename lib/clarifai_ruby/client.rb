@@ -65,19 +65,18 @@ module ClarifaiRuby
     def initialize(options)
       @options = options
       @request_path = '/info'
+      @token = Token.new.token
     end
 
     def get_request_url
       build_request_url
     end
 
-    def get()
-
-      token = get_token
+    def get
       #do the actual GET
       response = self.class.get(build_request_url,
         :headers => {
-          "Authorization" => "Bearer #{token}"
+          "Authorization" => "Bearer #{@token}"
         }
       )
     end
@@ -98,10 +97,6 @@ module ClarifaiRuby
     def build_request_url
       ClarifaiRuby.configuration.api_url + @request_path
     end
-    #
-    def get_token
-      ClarifaiRuby.generate_token
-    end
   end
 end
 
@@ -118,6 +113,25 @@ module ClarifaiRuby
 
     def status_code
       # self.get["status_code"]
+    end
+  end
+end
+
+
+module ClarifaiRuby
+  class Token
+    include HTTParty
+    base_uri 'https://api.clarifai.com'
+
+    attr_reader :token
+
+    def initialize
+      @token = get_token
+    end
+
+    private
+    def get_token
+      ClarifaiRuby.generate_token
     end
   end
 end
