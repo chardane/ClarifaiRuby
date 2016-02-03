@@ -1,7 +1,8 @@
+require 'httparty'
+
 require "clarifai_ruby/version"
 require 'clarifai_ruby/configuration'
 require 'clarifai_ruby/client'
-require 'httparty'
 
 module ClarifaiRuby
   def self.configuration

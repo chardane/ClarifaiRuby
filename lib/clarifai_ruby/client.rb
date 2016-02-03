@@ -1,3 +1,4 @@
+
 # module ClarifaiRuby
 #   class Client
 #     include HTTParty
@@ -35,6 +36,11 @@
 #     def client
 #       ClarifaiRuby.client
 #     end
+#
+#     def get
+#       query = { "url" => img_url }
+#     end
+#
 #   end
 # end
 #
@@ -53,53 +59,65 @@
 
 module ClarifaiRuby
   class InfoRequest
-    include httparty
-    base_uri ClarifaiRuby::configuration.api_url
+    include HTTParty
+    base_uri 'https://api.clarifai.com'
 
     def initialize(options)
       @options = options
-      @request_path = "/info"
+      @request_path = '/info'
     end
 
-    def doc_id
-
+    def get_request_url
+      build_request_url
     end
 
-    def get
+    def get()
+
+      token = get_token
       #do the actual GET
-      response = client.get(@request_path, image_url) #something base_uri + request_path
+      response = self.class.get(build_request_url,
+        :headers => {
+          "Authorization" => "Bearer #{token}"
+        }
+      )
     end
-
-    def post
-      #do the actual POST
-      response = #something
-      response = JSON.parse(response)
-      return ClarifaiRuby::InfoResponse.new(response)
-    end
-
-    def client
-      ClarifaiRuby::Client.new
-    end
-
+    #
+    # def post
+    #   #do the actual POST
+    #   response = #something
+    #   response = JSON.parse(response)
+    #   return ClarifaiRuby::InfoResponse.new(response)
+    # end
+    #
+    # def client
+    #   ClarifaiRuby::Client.new
+    # end
+    #
     private
-
+    #
     def build_request_url
-
+      ClarifaiRuby.configuration.api_url + @request_path
     end
-
+    #
     def get_token
-      # go get a token
+      ClarifaiRuby.generate_token
     end
   end
 end
 
 module ClarifaiRuby
-  class InfoResponse #parse the json response and make it available
-    attr_reader :max_image_size
+  class InfoResponse #parse the json response anmake it available
+    attr_reader :max_image_size, :default_model, :max_video_size
 
     def initialize(json_response)
       @raw_response = json_response
       @max_image_size = json_response['results']['max_image_size']
+      @max_video_size = json_response['results']['max_video_size']
+      @default_model = json_response['results']['default_model']
+    end
+
+    def status_code
+      # self.get["status_code"]
     end
   end
 end
