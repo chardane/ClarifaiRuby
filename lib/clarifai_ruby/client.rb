@@ -5,11 +5,10 @@ module ClarifaiRuby
     base_uri 'https://api.clarifai.com'
 
     def initialize
-      #get access token with client_id and client_secret & put access token in header
-      @token = Token.new.token
+      #get access token with client_id and client_secret & put access token in heade
       @options = {
         :headers => {
-          "Authorization" => "Bearer #{@token}"
+          "Authorization" => "Bearer #{Token.new.token}"
         }
       }
     end
