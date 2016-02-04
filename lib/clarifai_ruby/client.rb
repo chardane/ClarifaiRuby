@@ -1,31 +1,38 @@
 
-# module ClarifaiRuby
-#   class Client
-#     include HTTParty
-#     base_uri ClarifaiRuby.configuration.api_url
-#
-#     def initialize
-#       #get access token with client_id and client_secret & put access token in header
-#       @token = Token.new
-#     end
-#
-#     def info(opts)
-#       # Info.new(opts)
-#     end
-#
-#     def tag(opts)
-#       # Tag.new(opts)
-#     end
-#
-#     def feedback(opts)
-#       # Feedback.new(opts)
-#     end
-#
-#     def color(opts)
-#       # Color.new(opts)
-#     end
-#   end
-# end
+module ClarifaiRuby
+  class Client
+    include HTTParty
+    base_uri 'https://api.clarifai.com'
+
+    def initialize
+      #get access token with client_id and client_secret & put access token in header
+      @token = Token.new.token
+      @options = {
+        :headers => {
+          "Authorization" => "Bearer #{@token}"
+        }
+      }
+    end
+
+    def info
+      info_request = InfoRequest.new(@options)
+      info_response = InfoResponse.new(info_request.get)
+      # Info.new(opts)
+    end
+
+    def tag(opts)
+      # Tag.new(opts)
+    end
+
+    def feedback(opts)
+      # Feedback.new(opts)
+    end
+
+    def color(opts)
+      # Color.new(opts)
+    end
+  end
+end
 
 # module ClarifaiRuby
 #   class TagRequest
@@ -65,7 +72,6 @@ module ClarifaiRuby
     def initialize(options)
       @options = options
       @request_path = '/info'
-      @token = Token.new.token
     end
 
     def get_request_url
@@ -74,11 +80,7 @@ module ClarifaiRuby
 
     def get
       #do the actual GET
-      response = self.class.get(build_request_url,
-        :headers => {
-          "Authorization" => "Bearer #{@token}"
-        }
-      )
+      response = self.class.get(build_request_url, :headers => @options[:headers])
     end
     #
     # def post
