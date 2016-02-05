@@ -4,6 +4,8 @@ module ClarifaiRuby
     include HTTParty
     base_uri 'https://api.clarifai.com'
 
+    attr_reader :info_response
+
     def initialize
       #get access token with client_id and client_secret & put access token in heade
       @options = {
@@ -15,21 +17,21 @@ module ClarifaiRuby
 
     def info
       info_request = InfoRequest.new(@options)
-      info_response = InfoResponse.new(info_request.get)
+      @info_response = InfoResponse.new(info_request.get, 0)
       # Info.new(opts)
     end
 
-    def tag(opts)
-      # Tag.new(opts)
-    end
-
-    def feedback(opts)
-      # Feedback.new(opts)
-    end
-
-    def color(opts)
-      # Color.new(opts)
-    end
+    # def tag(opts)
+    #   # Tag.new(opts)
+    # end
+    #
+    # def feedback(opts)
+    #   # Feedback.new(opts)
+    # end
+    #
+    # def color(opts)
+    #   # Color.new(opts)
+    # end
   end
 end
 
@@ -103,13 +105,29 @@ end
 
 module ClarifaiRuby
   class InfoResponse #parse the json response anmake it available
-    attr_reader :max_image_size, :default_model, :max_video_size
+    # attr_reader :max_image_size, :default_model, :max_video_size
 
-    def initialize(json_response)
-      @raw_response = json_response
-      @max_image_size = json_response['results']['max_image_size']
-      @max_video_size = json_response['results']['max_video_size']
-      @default_model = json_response['results']['default_model']
+    def initialize(json_response, recursion)
+
+      json_response.each do |name, value|
+        if value.is_a? Hash
+          initialize(value, recursion+1)
+        else
+          self.class.send(:attr_reader, name)
+          instance_variable_set("@#{name}", value)
+        end
+      end
+
+
+      # @raw_response = json_response.parsed_response
+      #
+      # print "\n" + @raw_response.to_s + "\n"
+      # @response = @raw_response['results']
+      # print "\n" + @response.to_s + "\n"
+      #
+      # @max_image_size = json_response['results']['max_image_size']
+      # @max_video_size = json_response['results']['max_video_size']
+      # @default_model = json_response['results']['default_model']
     end
 
     def status_code
