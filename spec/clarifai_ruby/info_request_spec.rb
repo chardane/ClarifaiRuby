@@ -7,20 +7,6 @@ describe ClarifaiRuby::InfoRequest do
 
       described_class.new
     end
-
-    context "when there are options passed" do
-      let(:opts) { { foo: "bar" } }
-
-      it "passes in opts correctly", :vcr do
-        expect(described_class.new(opts).options).to eq opts
-      end
-    end
-
-    context "when there are no options passed" do
-      it "set options equal to an empty hash", :vcr do
-        expect(described_class.new.options).to be_empty
-      end
-    end
   end
 
   describe "#get" do
@@ -33,6 +19,41 @@ describe ClarifaiRuby::InfoRequest do
 
     it "returns an info response object", :vcr do
       expect(info_request.get).to be_a ClarifaiRuby::InfoResponse
+    end
+
+    context "when there are options passed" do
+      let(:opts) { { foo: "bar" } }
+      let(:response) { double }
+      let(:raw_response) { double(:raw_response, parsed_response: json_response) }
+      let(:json_response) { double(:json_response) }
+      let(:client) { double(:client) }
+
+      before do
+        allow(ClarifaiRuby::Client).to receive(:new).and_return client
+        allow(client).to receive(:get).with(described_class::INFO_PATH, opts).and_return raw_response
+        allow(ClarifaiRuby::InfoResponse).to receive(:new).with(json_response).and_return response
+      end
+
+      it "passes opts to the get request correctly" do
+        expect(info_request.get(opts)).to eq response
+      end
+    end
+
+    context "when there are no options passed" do
+      let(:response) { double }
+      let(:raw_response) { double(:raw_response, parsed_response: json_response) }
+      let(:json_response) { double(:json_response) }
+      let(:client) { double(:client) }
+
+      before do
+        allow(ClarifaiRuby::Client).to receive(:new).and_return client
+        allow(client).to receive(:get).with(described_class::INFO_PATH, {}).and_return raw_response
+        allow(ClarifaiRuby::InfoResponse).to receive(:new).with(json_response).and_return response
+      end
+
+      it "passes an empty hash to the get request" do
+        expect(info_request.get).to eq response
+      end
     end
   end
 end
