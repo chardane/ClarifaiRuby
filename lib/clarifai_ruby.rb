@@ -1,6 +1,11 @@
+require 'httparty'
+
 require "clarifai_ruby/version"
 require 'clarifai_ruby/configuration'
-require 'httparty'
+require 'clarifai_ruby/client'
+require 'clarifai_ruby/info_request'
+require 'clarifai_ruby/info_response'
+require 'clarifai_ruby/token'
 
 module ClarifaiRuby
   def self.configuration
@@ -19,8 +24,8 @@ end
 # Usage
 #
 # ClarifaiRuby.configure do |config|
-#   config.base_url = "https://api.clarifai.com/v1"
-#   config.version_path = "/v1"
-#   config.client_id = "XDEWESBGHRDEWFGNBV"
-#   config.client_secret = "-123wedkfjnkj3"
+#   config.base_url 			= "https://api.clarifai.com"
+#   config.version_path 	= "/v1"
+#   config.client_id 			=
+#   config.client_secret 	=
 # end

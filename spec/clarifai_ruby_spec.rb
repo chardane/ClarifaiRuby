@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'clarifai_ruby'
+require 'pry'
 
 describe ClarifaiRuby do
   it 'has a version number' do
