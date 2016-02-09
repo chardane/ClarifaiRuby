@@ -3,6 +3,9 @@ require 'httparty'
 require "clarifai_ruby/version"
 require 'clarifai_ruby/configuration'
 require 'clarifai_ruby/client'
+require 'clarifai_ruby/info_request'
+require 'clarifai_ruby/info_response'
+require 'clarifai_ruby/token'
 
 module ClarifaiRuby
   def self.configuration
@@ -16,17 +19,6 @@ module ClarifaiRuby
   def self.configure
     yield configuration
   end
-
-  def self.generate_token
-    body = {
-      "grant_type" => "client_credentials",
-      "client_id" => "#{@configuration.client_id}",
-      "client_secret" => "#{@configuration.client_secret}"
-    }
-
-    response = HTTParty.post(@configuration.api_url + "/token", :body => body).parsed_response
-    @configuration.token = response['access_token']
-  end
 end
 
 # Usage
@@ -34,6 +26,6 @@ end
 # ClarifaiRuby.configure do |config|
 #   config.base_url 			= "https://api.clarifai.com"
 #   config.version_path 	= "/v1"
-#   config.client_id 			= "XDEWESBGHRDEWFGNBV"
-#   config.client_secret 	= "-123wedkfjnkj3"
+#   config.client_id 			=
+#   config.client_secret 	=
 # end

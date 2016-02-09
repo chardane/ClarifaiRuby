@@ -1,6 +1,6 @@
 module ClarifaiRuby
   class Configuration
-    attr_accessor :base_url, :client_id, :client_secret, :version_path, :token
+    attr_accessor :base_url, :client_id, :client_secret, :version_path
 
     def initialize
       @base_url = 'https://api.clarifai.com'

@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clarifai.com/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&client_id=-GMMA7LUQQ_xKYRWQDgIosC2U6JNusO7R7neDIJy&client_secret=VPH8lyZjE9BhnztcvXeGWRA_OUEfckFBt4sgWqXj
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - POST, OPTIONS
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 09 Feb 2016 07:52:57 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.1.19
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '152'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"access_token": "YVnJmrvqltlsWz8LyANyLKaCTGUC3h", "token_type": "Bearer",
+        "expires_in": 176400, "scope": "api_access_write api_access api_access_read"}'
+    http_version: 
+  recorded_at: Tue, 09 Feb 2016 07:52:57 GMT
+recorded_with: VCR 3.0.1
