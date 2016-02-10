@@ -1,4 +1,4 @@
-require 'httparty'
+require 'httmultiparty'
 
 require "clarifai_ruby/version"
 require 'clarifai_ruby/configuration'
