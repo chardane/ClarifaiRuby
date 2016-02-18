@@ -6,6 +6,11 @@ require 'clarifai_ruby/client'
 require 'clarifai_ruby/info_request'
 require 'clarifai_ruby/info_response'
 require 'clarifai_ruby/token'
+require 'clarifai_ruby/tag_request'
+require 'clarifai_ruby/tag_response'
+require 'clarifai_ruby/models/tag'
+require 'clarifai_ruby/models/tag_image'
+
 
 module ClarifaiRuby
   def self.configuration
