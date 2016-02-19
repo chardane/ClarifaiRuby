@@ -1,6 +1,6 @@
 # ClarifaiRuby
 
-Made with love, from Prince Wilson and Charlyn Gonda (because they are awesome).
+Made with :heart:, from Prince Wilson and Charlyn Gonda (because they are awesome).
 
 This gem is an unofficial Ruby client for Clarifai's image recognition API.
 
@@ -60,7 +60,7 @@ And each request will result in a corresponding response object that will have a
 ### InfoRequest
 To make an `InfoRequest`:
 ```ruby
-info = ClarifaiRuby::InfoRequest.new.get(opts)
+info = ClarifaiRuby::InfoRequest.new.get
 #=> ClarifaiRuby::InfoResponse
 
 info.status_code
@@ -73,10 +73,15 @@ info.status_code
 ### FeedbackRequest
 **Pending**
 
+## Known Issues
+- Token Overconsumption
+  - Currently, every instance of any request objects generates a separate access token. We would need to change it, such that it would use one token across all request objects.
+- No support for multiple files
+  - The `tag` endpoint can support multiple files within its request, however, due to `HTTMultiParty`gem limitations.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/clarifai_ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/chardane/ClarifaiRuby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
