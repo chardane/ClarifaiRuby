@@ -1,6 +1,7 @@
 # ClarifaiRuby
 
 [![Build Status](https://travis-ci.org/chardane/ClarifaiRuby.svg?branch=master)](https://travis-ci.org/chardane/ClarifaiRuby)
+[![Code Climate](https://codeclimate.com/github/chardane/ClarifaiRuby/badges/gpa.svg)](https://codeclimate.com/github/chardane/ClarifaiRuby)
 
 Made with :heart:, from Prince Wilson and Charlyn Gonda (because they are awesome).
 
