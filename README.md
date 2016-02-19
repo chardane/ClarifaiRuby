@@ -67,7 +67,61 @@ info.status_code
 #=> "OK"
 ```
 ### TagRequest
-**Pending**
+To make a `TagRequest`:
+```ruby
+tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg")
+#=> #<ClarifaiRuby::TagResponse>
+
+tag_response.tag_images
+#=> [#<ClarifaiRuby::TagImage>]
+
+# Each tag image will contain an array of Tag objects
+tag_response.tag_images.first.tags
+#=> [#<ClarifaiRuby::Tag>, #<ClarifaiRuby::Tag>, ...]
+```
+
+#### Model
+
+You can pass in the `model` [(more info)](http://newdocs.clarifai.com/guide/tag#models)
+
+>If you'd like to get tags for an image or video using a different model, you can do so by passing in a `model` parameter. If you omit this parameter, the API will use the default model for your application. You can change this on the applications page.
+
+```ruby
+tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg", model: "nsfw-v0.1")
+#=> #<ClarifaiRuby::TagResponse>
+```
+As of February here are the valid models:
+
+1. `general-v1.3`
+2. `nsfw-v0.1`
+3. `weddings-v1.0`
+
+Please refer to the [documentation](http://newdocs.clarifai.com/guide/tag#models) for any possible changes to this list.
+
+#### Select Classes
+
+You can pass in `select_classes` [(more info)](http://newdocs.clarifai.com/guide/tag#select-classes)
+
+>If you'd like to get the probability of a certain tag or tags, you can specify them in the request using the `select_classes` parameter. Different tags should be comma separated.
+
+```ruby
+tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg", select_classes: "light,sky")
+#=> #<ClarifaiRuby::TagResponse>
+```
+
+#### Language
+
+You can pass in `language` [(more info)](http://newdocs.clarifai.com/guide/tag#languages)
+
+> By default this API call returns tags in English. You can change this default setting on the applications page or can pass in a language parameter. If you use a language other than English, you must make sure the model you are using is `general-v1.3`.
+
+```ruby
+tag_response = tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg", model: "general-v1.3", language: "es")
+#=> #<ClarifaiRuby::TagResponse>
+```
+
+
+
 ### ColorRequest
 **Pending**
 ### FeedbackRequest
