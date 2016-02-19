@@ -1,5 +1,7 @@
 # ClarifaiRuby
 
+[![Build Status](https://travis-ci.org/chardane/ClarifaiRuby.svg?branch=master)](https://travis-ci.org/chardane/ClarifaiRuby)
+
 Made with :heart:, from Prince Wilson and Charlyn Gonda (because they are awesome).
 
 This gem is an unofficial Ruby client for Clarifai's image recognition API.
