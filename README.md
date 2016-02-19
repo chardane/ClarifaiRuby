@@ -77,7 +77,7 @@ info.status_code
 - Token Overconsumption
   - Currently, every instance of any request objects generates a separate access token. We would need to change it, such that it would use one token across all request objects.
 - No support for multiple files
-  - The `tag` endpoint can support multiple files within its request, however, due to `HTTMultiParty`gem limitations.
+  - The `tag` endpoint can support multiple files within its request, however, due to `HTTMultiParty` gem limitations.
 
 ## Contributing
 
