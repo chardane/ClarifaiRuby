@@ -1,10 +1,15 @@
 # ClarifaiRuby
 
-Made with love, from Prince Wilson and Charlyn Gonda (because they are awesome)
+Made with love, from Prince Wilson and Charlyn Gonda (because they are awesome).
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clarifai_ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem is an unofficial Ruby client for Clarifai's image recognition API.
 
-TODO: Delete this and the text above, and describe your gem
+>The Clarifai API offers image and video recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to 'see' what's inside your visual content.
+>
+>[*Clarifai*](http://newdocs.clarifai.com)
+
+## Prerequisites
+Before using this gem, make sure to [create an account for Clarifai](https://developer.clarifai.com/accounts/signup/) and create an application to obtain a client id and client secret.
 
 ## Installation
 
@@ -16,21 +21,58 @@ gem 'clarifai_ruby'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install clarifai_ruby
+```
+$ gem install clarifai_ruby
+```
+
+## Configuration
+To configure the gem, stick this block:
+```ruby
+ClarifaiRuby.configure do |config|
+  config.base_url       = "https://api.clarifai.com"
+  config.version_path   = "/v1"
+  config.client_id      = "<CLIENT_ID>"
+  config.client_secret  = "<CLIENT_SECRET>"
+end
+```
+inside of your initializer file.
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem can make 4 types of requests (Info, Tag, Color, Feedback) using 4 corresponding request objects:
+- `InfoRequest`
+- `TagRequest`
+- `ColorRequest`
+- `FeedbackRequest`
 
-## Development
+And each request will result in a corresponding response object that will have access to each response's data:
+- `InfoResponse`
+- `TagResponse`
+- `ColorResponse`
+- `FeedbackResponse`
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### InfoRequest
+To make an `InfoRequest`:
+```ruby
+info = ClarifaiRuby::InfoRequest.new.get(opts)
+#=> ClarifaiRuby::InfoResponse
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+info.status_code
+#=> "OK"
+```
+### TagRequest
+**Pending**
+### ColorRequest
+**Pending**
+### FeedbackRequest
+**Pending**
+
 
 ## Contributing
 
