@@ -5,6 +5,8 @@ require 'clarifai_ruby/configuration'
 require 'clarifai_ruby/client'
 require 'clarifai_ruby/info_request'
 require 'clarifai_ruby/info_response'
+require 'clarifai_ruby/color_request'
+require 'clarifai_ruby/color_response'
 require 'clarifai_ruby/token'
 require 'clarifai_ruby/tag_request'
 require 'clarifai_ruby/tag_response'
@@ -25,12 +27,3 @@ module ClarifaiRuby
     yield configuration
   end
 end
-
-# Usage
-#
-# ClarifaiRuby.configure do |config|
-#   config.base_url 			= "https://api.clarifai.com"
-#   config.version_path 	= "/v1"
-#   config.client_id 			=
-#   config.client_secret 	=
-# end

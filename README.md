@@ -11,6 +11,22 @@ This gem is an unofficial Ruby client for Clarifai's image recognition API.
 >
 >[*Clarifai*](http://newdocs.clarifai.com)
 
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [InfoRequest](#inforequest)
+  - [TagRequest](#tagrequest)
+    - [Model](#model)
+    - [Select Classes](#select-classes)
+    - [Language](#language)
+  - [ColorRequest](#colorrequest)
+  - [FeedbackRequest](#feedbackrequest)
+- [Known Issues](#known-issues)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Prerequisites
 Before using this gem, make sure to [create an account for Clarifai](https://developer.clarifai.com/accounts/signup/) and create an application to obtain a client id and client secret.
 
@@ -123,8 +139,6 @@ tag_response = tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.
 #=> #<ClarifaiRuby::TagResponse>
 ```
 
-
-
 ### ColorRequest
 **Pending**
 ### FeedbackRequest
@@ -134,7 +148,7 @@ tag_response = tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.
 - Token Overconsumption
   - Currently, every instance of any request objects generates a separate access token. We would need to change it, such that it would use one token across all request objects.
 - No support for multiple files
-  - The `tag` endpoint can support multiple files within its request, however, due to `HTTMultiParty` gem limitations.
+  - The `tag` endpoint can support multiple files within its request, however, due to `HTTMultiParty` gem limitations.Â
 
 ## Contributing
 
