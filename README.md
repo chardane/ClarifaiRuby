@@ -98,15 +98,24 @@ tag_response.tag_images
 tag_response.tag_images.first.tags
 #=> [#<ClarifaiRuby::Tag>, #<ClarifaiRuby::Tag>, ...]
 ```
+A `TagResponse` will contain an array of `TagImage`s and each `TagImage` will contain an array of `Tag`s
+
+### Tag
+A `Tag` represents each tag returned by Clarifai. 
+
+Each `Tag` contains these readers:
+- `word` - the class of the tag
+- `prob` -  (short for probability) indicate how well the model believes the corresponding tag is associated with the input data.
+- `concept_id` - the corresponding concept_id
 
 #### Model
 
-You can pass in the `model` [(more info)](http://newdocs.clarifai.com/guide/tag#models)
+You can also pass in the `model` [(more info)](http://newdocs.clarifai.com/guide/tag#models)
 
 >If you'd like to get tags for an image or video using a different model, you can do so by passing in a `model` parameter. If you omit this parameter, the API will use the default model for your application. You can change this on the applications page.
 
 ```ruby
-tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg", model: "nsfw-v0.1")
+ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/metro-north.jpg", model: "nsfw-v0.1")
 #=> #<ClarifaiRuby::TagResponse>
 ```
 As of February here are the valid models:
