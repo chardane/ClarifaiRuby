@@ -1,6 +1,4 @@
 module ClarifaiRuby
-  class RequestError < StandardError; end
-
   class TagRequest
     TAG_PATH = '/tag'
     attr_reader :raw_response, :options
@@ -19,7 +17,7 @@ module ClarifaiRuby
 
       @raw_response = @client.get(TAG_PATH, body).parsed_response
       raise RequestError.new @raw_response["status_msg"] if @raw_response["status_code"] != "OK"
-      
+
       TagResponse.new(raw_response)
     end
 
