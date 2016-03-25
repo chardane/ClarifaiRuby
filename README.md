@@ -9,7 +9,7 @@ This gem is an unofficial Ruby client for Clarifai's image recognition API.
 
 >The Clarifai API offers image and video recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to 'see' what's inside your visual content.
 >
->[*Clarifai*](http://newdocs.clarifai.com)
+>[*Clarifai*](https://developer.clarifai.com/guide/)
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -28,7 +28,7 @@ This gem is an unofficial Ruby client for Clarifai's image recognition API.
 - [License](#license)
 
 ## Prerequisites
-Before using this gem, make sure to [create an account for Clarifai](https://developer.clarifai.com/accounts/signup/) and create an application to obtain a client id and client secret.
+Before using this gem, make sure to [create an account for Clarifai](https://developer.clarifai.com/signup/?code=champs) and create an application to obtain a client id and client secret.
 
 ## Installation
 
@@ -101,7 +101,7 @@ tag_response.tag_images.first.tags
 A `TagResponse` will contain an array of `TagImage`s and each `TagImage` will contain an array of `Tag`s
 
 ### Tag
-A `Tag` represents each tag returned by Clarifai. 
+A `Tag` represents each tag returned by Clarifai.
 
 Each `Tag` contains these readers:
 - `word` - the class of the tag
@@ -110,7 +110,7 @@ Each `Tag` contains these readers:
 
 #### Model
 
-You can also pass in the `model` [(more info)](http://newdocs.clarifai.com/guide/tag#models)
+You can pass in the `model` [(more info)](http://developer.clarifai.com/guide/tag#models)
 
 >If you'd like to get tags for an image or video using a different model, you can do so by passing in a `model` parameter. If you omit this parameter, the API will use the default model for your application. You can change this on the applications page.
 
@@ -124,11 +124,11 @@ As of February here are the valid models:
 2. `nsfw-v0.1`
 3. `weddings-v1.0`
 
-Please refer to the [documentation](http://newdocs.clarifai.com/guide/tag#models) for any possible changes to this list.
+Please refer to the [documentation](http://developer.clarifai.com/guide/tag#models) for any possible changes to this list.
 
 #### Select Classes
 
-You can pass in `select_classes` [(more info)](http://newdocs.clarifai.com/guide/tag#select-classes)
+You can pass in `select_classes` [(more info)](http://developer.clarifai.com/guide/tag#select-classes)
 
 >If you'd like to get the probability of a certain tag or tags, you can specify them in the request using the `select_classes` parameter. Different tags should be comma separated.
 
@@ -139,7 +139,7 @@ tag_response = ClarifaiRuby::TagRequest.new.get("https://samples.clarifai.com/me
 
 #### Language
 
-You can pass in `language` [(more info)](http://newdocs.clarifai.com/guide/tag#languages)
+You can pass in `language` [(more info)](https://developer.clarifai.com/guide/tag#guide-tag-languages)
 
 > By default this API call returns tags in English. You can change this default setting on the applications page or can pass in a language parameter. If you use a language other than English, you must make sure the model you are using is `general-v1.3`.
 
