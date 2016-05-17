@@ -12,6 +12,8 @@ require 'clarifai_ruby/tag_request'
 require 'clarifai_ruby/tag_response'
 require 'clarifai_ruby/models/tag'
 require 'clarifai_ruby/models/tag_image'
+require 'clarifai_ruby/feedback_request'
+require 'clarifai_ruby/feedback_response'
 
 
 module ClarifaiRuby
