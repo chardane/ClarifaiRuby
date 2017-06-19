@@ -29,8 +29,8 @@ module ClarifaiRuby
       concept_ids = tag_doc["concept_ids"]
       timestamps  = tag_doc["timestamps"]
 
-      timestamps.map do |ts|
-        tags = classes[ts].zip(probs[ts], concept_ids[ts] || [])
+      timestamps.each_with_index.map do |_ts, index|
+        tags = classes[index].zip(probs[index], concept_ids[index] || [])
         tags.map {|tag| Tag.new(*tag) }
       end
     end
