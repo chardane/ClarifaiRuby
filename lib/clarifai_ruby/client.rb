@@ -1,9 +1,10 @@
 module ClarifaiRuby
   class RequestError < StandardError; end
-  
+
   class Client
     include HTTMultiParty
-    debug_output $stderr
+    # debug_output $stderr
+    
     disable_rails_query_string_format
 
     attr_reader :token
